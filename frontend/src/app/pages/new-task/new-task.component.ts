@@ -10,7 +10,7 @@ import { Task } from 'src/app/models/task.model';
 })
 export class NewTaskComponent implements OnInit {
 
-  listId: string = '62419deba5b8b3721cdcdc03';
+  listId: string = '';
 
   constructor(private taskService: TaskService,
             private route: ActivatedRoute,
