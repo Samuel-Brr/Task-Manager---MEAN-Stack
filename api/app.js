@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 
+let cors = require('cors')
+
 const { mongoose } = require('./database/mongoose')
 
 const bodyParser = require('body-parser')
@@ -14,18 +16,20 @@ const { List, Task } = require('./database/models')
 app.use(bodyParser.json())
 
 // // CORS HEADERS MIDDLEWARE
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET, POST, HEAD, OPTIONS, PUT, PATCH, DELETE");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-access-token, x-refresh-token, _id");
+// app.use(function (req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Methods", "GET, POST, HEAD, OPTIONS, PUT, PATCH, DELETE");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-access-token, x-refresh-token, _id");
 
-    res.header(
-        'Access-Control-Expose-Headers',
-        'x-access-token, x-refresh-token'
-    );
+//     res.header(
+//         'Access-Control-Expose-Headers',
+//         'x-access-token, x-refresh-token'
+//     );
 
-    next();
-});
+//     next();
+// });
+
+app.use(cors())
 
 
 
@@ -93,13 +97,13 @@ app.get('/lists/:listId/tasks', (req,res)=>{
 
     const listId = req.params.listId 
 
-    if(listId != undefined){
-        Task.find({
-            _listId: listId
-        }).then((tasks)=>{
-            res.status(200).send(tasks)
-        })
-    }
+    
+    Task.find({
+        _listId: listId
+    }).then((tasks)=>{
+        res.status(200).send(tasks)
+    })
+
 
 })
 
@@ -120,8 +124,8 @@ app.post('/lists/:listId/task', (req,res)=>{
     const _listId = req.params.listId
     
     const newTask = new Task({
-        title,
-        _listId
+        title: title,
+        _listId: _listId
     })
 
     newTask.save().then((taskDoc)=>{

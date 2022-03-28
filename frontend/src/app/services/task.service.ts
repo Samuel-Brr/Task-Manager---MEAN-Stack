@@ -22,11 +22,11 @@ export class TaskService {
   }
 
   createTask(title: string, listId: string){
-    return this.webReqService.post(`/lists/${listId}/task`, { title })
+    return this.webReqService.post(`lists/${listId}/task`, { title })
   }
 
   complete(task: Task){
-    return this.webReqService.patch(`lists/${task._listId}/tasks/${task._id}`, {
+    return this.webReqService.patch(`lists/${task._listId}/task/${task._id}`, {
       completed: !task.completed
     })
   }

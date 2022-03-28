@@ -31,7 +31,13 @@
       <div class="task" *ngFor="let task of tasks"
           [ngClass]="{'completed': task.completed}"
           (click)="onTaskClick(task)">
-        <p> {{task.title}} </p>
+
+          <div class="task-text">
+
+            <p> {{task.title}} </p>
+
+          </div>
+
       </div>
 
       <button class="is-primary button circle-add-button"
