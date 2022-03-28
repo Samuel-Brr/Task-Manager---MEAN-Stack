@@ -7,13 +7,15 @@
       </h1>
 
       <div class="list-menu">
-        <a class="list-menu-item">
-          <p>List #1</p>
+        <a class="list-menu-item" *ngFor="let list of lists"
+          routerLinkActive="is-active"
+          [routerLink]="['/lists', list._id]">
+          <p> {{list.title}} </p>
         </a>
       </div>
 
       <button
-        (click)="createNewList()"
+        routerLink="/new-list"
         class="button is-primary has-text-white">
         + New List
       </button>
@@ -26,8 +28,8 @@
       </h1>
 
       <!-- Task Elements -->
-      <div class="task">
-        <p>This is something i have to do</p>
+      <div class="task" *ngFor="let task of tasks">
+        <p> {{task.title}} </p>
       </div>
 
     </div>
