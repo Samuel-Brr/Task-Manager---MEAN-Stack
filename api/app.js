@@ -89,11 +89,17 @@ app.delete('/lists/:id', (req,res) => {
 })
 
 app.get('/lists/:listId/tasks', (req,res)=>{
-    Task.find({
-        _listId: req.params.listId
-    }).then((tasks)=>{
-        res.status(200).send(tasks)
-    })
+
+    const listId = req.params.listId 
+
+    if(listId != undefined){
+        Task.find({
+            _listId: listId
+        }).then((tasks)=>{
+            res.status(200).send(tasks)
+        })
+    }
+
 })
 
 // app.get('/lists/:listId/task/:taskId', (req,res)=>{

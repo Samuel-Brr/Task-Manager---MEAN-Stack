@@ -18,13 +18,10 @@ export class TaskViewComponent implements OnInit {
 
     this.route.params.subscribe(
       (params: Params) => {
-        console.log(params)
         this.taskService.getTasks(params['listId']).subscribe((tasks => {
           this.tasks = tasks
         }))
       }
-
-
     )
 
     this.taskService.getLists().subscribe((lists) => {
