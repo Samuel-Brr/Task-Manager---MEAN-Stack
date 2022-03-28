@@ -10,7 +10,7 @@ import { Task } from 'src/app/models/task.model';
 })
 export class NewTaskComponent implements OnInit {
 
-  listId: string = '';
+  listId: string = '62419deba5b8b3721cdcdc03';
 
   constructor(private taskService: TaskService,
             private route: ActivatedRoute,
@@ -27,7 +27,7 @@ export class NewTaskComponent implements OnInit {
 
   }
 
-  createTask(title: string){
+  createTask(title: string ){
     this.taskService.createTask(title, this.listId).subscribe((newTask) => {
       this.router.navigate(['../'], {relativeTo: this.route})
     })

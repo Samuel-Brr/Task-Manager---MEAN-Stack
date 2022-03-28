@@ -138,7 +138,7 @@ app.patch('/lists/:listId/task/:taskId', (req,res)=>{
     },{
         $set: req.body
     }).then(() => {
-        res.sendStatus(204)
+        res.status(204).send({message: "task completed from the api"})
     })
 })
 
