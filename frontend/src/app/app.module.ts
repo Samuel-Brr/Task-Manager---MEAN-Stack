@@ -11,6 +11,8 @@ import { NewTaskComponent } from './pages/new-task/new-task.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { WebReqInterceptor } from './services/web-req-interceptor.service';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
+import { EditTaskComponent } from './pages/edit-task/edit-task.component';
+import { EditListComponent } from './pages/edit-list/edit-list.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { SignupPageComponent } from './pages/signup-page/signup-page.component';
     NewListComponent,
     NewTaskComponent,
     LoginPageComponent,
-    SignupPageComponent
+    SignupPageComponent,
+    EditTaskComponent,
+    EditListComponent
   ],
   imports: [
     BrowserModule,
