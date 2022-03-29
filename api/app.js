@@ -28,7 +28,12 @@ app.use(bodyParser.json())
 
 //     next();
 // });
-app.use(cors())
+
+const corsOptions = {
+    exposedHeaders: ['x-access-token','x-refresh-token']
+}
+
+app.use(cors(corsOptions))
 
 // check whether the request has a valid JWT access token
 let authenticate = (req, res, next) => {

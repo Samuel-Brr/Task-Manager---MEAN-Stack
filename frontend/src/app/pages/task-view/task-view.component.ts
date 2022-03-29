@@ -25,7 +25,7 @@ export class TaskViewComponent implements OnInit {
             this.tasks = tasks
           }))
         }
-        else this.tasks = []
+        else this.tasks = undefined
 
       }
     )
