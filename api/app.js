@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 
 let cors = require('cors')
-
+const jwt = require('jsonwebtoken');
 const { mongoose } = require('./database/mongoose')
 
 const bodyParser = require('body-parser')
